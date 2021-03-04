@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace StepperControlEthernet
 {
@@ -42,11 +36,15 @@ namespace StepperControlEthernet
             localportTextBox.ReadOnly = true;
             remoteportTextBox.ReadOnly = true;
             remoteadressTextBox.ReadOnly = true;
+
             try
             {
-                ReceiveMessage();
+                Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
+                receiveThread.Start();
                 loginButton.Enabled = false;
                 logoutButton.Enabled = true;
+                sendButton.Enabled = true;
+                commandTextBox.ReadOnly = false;
                 alive = true;
             }
             catch (Exception ex)
@@ -56,14 +54,15 @@ namespace StepperControlEthernet
         }
         private void ReceiveMessage()
         {
-            UdpClient receiver = new UdpClient(LOCALPORT); // UdpClient для получения данных
+            client = new UdpClient(LOCALPORT); // UdpClient для получения данных
             IPEndPoint remoteIp = null; // адрес входящего подключения
             try
             {
                 while (true)
                 {
-                    byte[] data = receiver.Receive(ref remoteIp); // получаем данные
+                    byte[] data = client.Receive(ref remoteIp); // получаем данные
                     string message = Encoding.Unicode.GetString(data);
+                    recievedMessageTextBox.Text = message;
                 }
             }
             catch (Exception ex)
@@ -72,20 +71,20 @@ namespace StepperControlEthernet
             }
             finally
             {
-                receiver.Close();
+                client.Close();
             }
         }
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            UdpClient send = new UdpClient(LOCALPORT);
+            
             try
             {
                 while (true)
                 {
                     string message = commandTextBox.Text; // сообщение для отправки
                     byte[] data = Encoding.Unicode.GetBytes(message);
-                    send.Send(data, data.Length, remoteAdress, REMOTEPORT); // отправка
+                    client.Send(data, data.Length, remoteAdress, REMOTEPORT); // отправка
                 }
             }
             catch (Exception ex)
@@ -94,14 +93,14 @@ namespace StepperControlEthernet
             }
             finally
             {
-                send.Close();
+                client.Close();
             }
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
             EndSocket();
-                     
+
         }
         private void EndSocket()
         {
@@ -112,7 +111,8 @@ namespace StepperControlEthernet
             logoutButton.Enabled = false;
             commandTextBox.ReadOnly = true;
             alive = false;
-            client.Close();            
+            client.Close();
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -121,8 +121,8 @@ namespace StepperControlEthernet
                 EndSocket();
         }
     }
-    
+
 
 }
 
-    
+

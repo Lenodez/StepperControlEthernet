@@ -39,6 +39,7 @@ namespace StepperControlEthernet
             this.logoutButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.localportTextBox = new System.Windows.Forms.TextBox();
+            this.recievedMessageTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // loginButton
@@ -46,17 +47,17 @@ namespace StepperControlEthernet
             this.loginButton.Location = new System.Drawing.Point(237, 23);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(81, 35);
-            this.loginButton.TabIndex = 0;
+            this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Задать параметры";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(264, 190);
+            this.sendButton.Location = new System.Drawing.Point(264, 128);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(75, 23);
-            this.sendButton.TabIndex = 1;
+            this.sendButton.TabIndex = 6;
             this.sendButton.Text = "=>";
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
@@ -95,10 +96,10 @@ namespace StepperControlEthernet
             // 
             // commandTextBox
             // 
-            this.commandTextBox.Location = new System.Drawing.Point(2, 190);
+            this.commandTextBox.Location = new System.Drawing.Point(12, 128);
             this.commandTextBox.Name = "commandTextBox";
             this.commandTextBox.Size = new System.Drawing.Size(234, 20);
-            this.commandTextBox.TabIndex = 6;
+            this.commandTextBox.TabIndex = 5;
             // 
             // logoutButton
             // 
@@ -124,13 +125,22 @@ namespace StepperControlEthernet
             this.localportTextBox.Location = new System.Drawing.Point(117, 5);
             this.localportTextBox.Name = "localportTextBox";
             this.localportTextBox.Size = new System.Drawing.Size(100, 20);
-            this.localportTextBox.TabIndex = 9;
+            this.localportTextBox.TabIndex = 1;
+            // 
+            // recievedMessageTextBox
+            // 
+            this.recievedMessageTextBox.Location = new System.Drawing.Point(12, 174);
+            this.recievedMessageTextBox.Name = "recievedMessageTextBox";
+            this.recievedMessageTextBox.ReadOnly = true;
+            this.recievedMessageTextBox.Size = new System.Drawing.Size(234, 20);
+            this.recievedMessageTextBox.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 225);
+            this.Controls.Add(this.recievedMessageTextBox);
             this.Controls.Add(this.localportTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logoutButton);
@@ -162,6 +172,7 @@ namespace StepperControlEthernet
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox localportTextBox;
+        private System.Windows.Forms.TextBox recievedMessageTextBox;
     }
 }
 
