@@ -86,16 +86,14 @@ namespace StepperControlEthernet
                     string message = commandTextBox.Text; // сообщение для отправки
                     byte[] data = Encoding.Unicode.GetBytes(message);
                     client.Send(data, data.Length, remoteAdress, REMOTEPORT); // отправка
+                    client.Close();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                client.Close();
-            }
+            
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
