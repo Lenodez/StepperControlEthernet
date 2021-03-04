@@ -36,12 +36,12 @@ namespace StepperControlEthernet
             localportTextBox.ReadOnly = true;
             remoteportTextBox.ReadOnly = true;
             remoteadressTextBox.ReadOnly = true;
-            client = new UdpClient(LOCALPORT);
+            
 
             try
             {
-                //Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
-                //receiveThread.Start();
+                Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
+                receiveThread.Start();
                 loginButton.Enabled = false;
                 logoutButton.Enabled = true;
                 sendButton.Enabled = true;
@@ -83,10 +83,11 @@ namespace StepperControlEthernet
             {
                 while (true)
                 {
+                    UdpClient send = new UdpClient();
                     string message = commandTextBox.Text; // сообщение для отправки
                     byte[] data = Encoding.Unicode.GetBytes(message);
-                    client.Send(data, data.Length, remoteAdress, REMOTEPORT); // отправка
-                    client.Close();
+                    send.Send(data, data.Length, remoteAdress, REMOTEPORT); // отправка
+                    send.Close();
                 }
             }
             catch (Exception ex)
