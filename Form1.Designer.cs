@@ -39,7 +39,7 @@ namespace StepperControlEthernet
             this.logoutButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.localportTextBox = new System.Windows.Forms.TextBox();
-            this.recievedMessageTextBox = new System.Windows.Forms.TextBox();
+            this.receivedMessageTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // loginButton
@@ -90,9 +90,9 @@ namespace StepperControlEthernet
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Адрес отправки";
+            this.label2.Text = "IP получателя";
             // 
             // commandTextBox
             // 
@@ -127,20 +127,20 @@ namespace StepperControlEthernet
             this.localportTextBox.Size = new System.Drawing.Size(100, 20);
             this.localportTextBox.TabIndex = 1;
             // 
-            // recievedMessageTextBox
+            // receivedMessageTextBox
             // 
-            this.recievedMessageTextBox.Location = new System.Drawing.Point(12, 174);
-            this.recievedMessageTextBox.Name = "recievedMessageTextBox";
-            this.recievedMessageTextBox.ReadOnly = true;
-            this.recievedMessageTextBox.Size = new System.Drawing.Size(234, 20);
-            this.recievedMessageTextBox.TabIndex = 9;
+            this.receivedMessageTextBox.Location = new System.Drawing.Point(12, 174);
+            this.receivedMessageTextBox.Name = "receivedMessageTextBox";
+            this.receivedMessageTextBox.ReadOnly = true;
+            this.receivedMessageTextBox.Size = new System.Drawing.Size(234, 20);
+            this.receivedMessageTextBox.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 225);
-            this.Controls.Add(this.recievedMessageTextBox);
+            this.Controls.Add(this.receivedMessageTextBox);
             this.Controls.Add(this.localportTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logoutButton);
@@ -172,7 +172,7 @@ namespace StepperControlEthernet
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox localportTextBox;
-        private System.Windows.Forms.TextBox recievedMessageTextBox;
+        private System.Windows.Forms.TextBox receivedMessageTextBox;
     }
 }
 
