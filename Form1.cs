@@ -12,6 +12,7 @@ namespace StepperControlEthernet
         private static IPAddress remoteIPAddress;
         private static int remotePort;
         private static int localPort;
+        public bool isalive = false;
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace StepperControlEthernet
             localportTextBox.ReadOnly = true;
             remoteportTextBox.ReadOnly = true;
             remoteadressTextBox.ReadOnly = true;
-            
+            isalive = true;
 
             try
             {
@@ -62,7 +63,7 @@ namespace StepperControlEthernet
             {
                 
 
-                while (true)
+                while (isalive)
                 {
                     // Ожидание дейтаграммы
                     byte[] receiveBytes = receivingUdpClient.Receive(ref RemoteIpEndPoint);
@@ -114,7 +115,7 @@ namespace StepperControlEthernet
         private void logoutButton_Click(object sender, EventArgs e)
         {
             EndSocket();
-
+            isalive = false;
         }
         private void EndSocket()
         {
@@ -128,7 +129,7 @@ namespace StepperControlEthernet
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            isalive = false;
         }
     }
 
