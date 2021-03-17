@@ -26,7 +26,7 @@ namespace StepperControlEthernet
 
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        public void loginButton_Click(object sender, EventArgs e)
         {
             localPort = Int16.Parse(localportTextBox.Text);
             remotePort = Int16.Parse(remoteportTextBox.Text);
@@ -65,8 +65,7 @@ namespace StepperControlEthernet
                 while (true)
                 {
                     // Ожидание дейтаграммы
-                    byte[] receiveBytes = receivingUdpClient.Receive(
-                       ref RemoteIpEndPoint);
+                    byte[] receiveBytes = receivingUdpClient.Receive(ref RemoteIpEndPoint);
 
                     // Преобразуем и отображаем данные
                     string returnData = Encoding.UTF8.GetString(receiveBytes);
@@ -84,7 +83,7 @@ namespace StepperControlEthernet
             Send(commandTextBox.Text);
         }
 
-        private static void Send(string datagram)
+        public static void Send(string datagram)
         {
             // Создаем UdpClient
             UdpClient sender = new UdpClient();
@@ -99,6 +98,7 @@ namespace StepperControlEthernet
 
                 // Отправляем данные
                 sender.Send(bytes, bytes.Length, endPoint);
+                sender.Close();
             }
             catch (Exception ex)
             {
