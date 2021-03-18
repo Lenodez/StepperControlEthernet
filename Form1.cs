@@ -55,11 +55,7 @@ namespace StepperControlEthernet
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                isalive = false;
-                
-            }
+            
         }
         private void Receiver()
         {
