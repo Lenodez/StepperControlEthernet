@@ -58,7 +58,7 @@ namespace StepperControlEthernet
             finally
             {
                 isalive = false;
-                tReceive.Abort();
+                
             }
         }
         private void Receiver()
@@ -140,9 +140,11 @@ namespace StepperControlEthernet
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            isalive = false;
-            tReceive.Abort();
-            receivingUdpClient.Close();
+            if (isalive)
+            {
+                tReceive.Abort();
+                receivingUdpClient.Close();
+            }
         }
     }
 
