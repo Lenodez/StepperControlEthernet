@@ -11,8 +11,10 @@ namespace StepperControlEthernet
     {
         private static IPAddress remoteIPAddress;
         private static int remotePort;
-        private static int localPort;
+        private static int localPort;        
         public bool isalive = false;
+        Thread tReceive = null;
+        UdpClient receivingUdpClient = null;
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace StepperControlEthernet
             logoutButton.Enabled = false;
             sendButton.Enabled = false;
             commandTextBox.ReadOnly = true;
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,6 +32,7 @@ namespace StepperControlEthernet
 
         public void loginButton_Click(object sender, EventArgs e)
         {
+            
             localPort = Int16.Parse(localportTextBox.Text);
             remotePort = Int16.Parse(remoteportTextBox.Text);
             remoteIPAddress = IPAddress.Parse(remoteadressTextBox.Text);
@@ -39,8 +43,8 @@ namespace StepperControlEthernet
 
             try
             {
-                Thread tRec = new Thread(new ThreadStart(Receiver));
-                tRec.Start();
+                tReceive = new Thread(new ThreadStart(Receiver));
+                tReceive.Start();
                 loginButton.Enabled = false;
                 logoutButton.Enabled = true;
                 sendButton.Enabled = true;
@@ -51,11 +55,16 @@ namespace StepperControlEthernet
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                isalive = false;
+                tReceive.Abort();
+            }
         }
         private void Receiver()
         {
             // Создаем UdpClient для чтения входящих данных
-            UdpClient receivingUdpClient = new UdpClient(localPort);
+            receivingUdpClient = new UdpClient(localPort);
 
             IPEndPoint RemoteIpEndPoint = null;
 
@@ -116,6 +125,8 @@ namespace StepperControlEthernet
         {
             EndSocket();
             isalive = false;
+            tReceive.Abort();
+            receivingUdpClient.Close();
         }
         private void EndSocket()
         {
@@ -130,6 +141,8 @@ namespace StepperControlEthernet
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             isalive = false;
+            tReceive.Abort();
+            receivingUdpClient.Close();
         }
     }
 
