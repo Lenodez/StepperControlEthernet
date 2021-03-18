@@ -11,7 +11,8 @@ namespace StepperControlEthernet
     {
         private static IPAddress remoteIPAddress;
         private static int remotePort;
-        private static int localPort;        
+        private static int localPort;
+        private static int sendPort;
         public bool isalive = false;
         Thread tReceive = null;
         UdpClient receivingUdpClient = null;
@@ -35,6 +36,7 @@ namespace StepperControlEthernet
             
             localPort = Int16.Parse(localportTextBox.Text);
             remotePort = Int16.Parse(remoteportTextBox.Text);
+            sendPort = Int16.Parse(sendportbox.Text);
             remoteIPAddress = IPAddress.Parse(remoteadressTextBox.Text);
             localportTextBox.ReadOnly = true;
             remoteportTextBox.ReadOnly = true;
@@ -92,7 +94,7 @@ namespace StepperControlEthernet
         public static void Send(string datagram)
         {
             // Создаем UdpClient
-            UdpClient sender = new UdpClient();
+            UdpClient sender = new UdpClient(sendPort);
 
             // Создаем endPoint по информации об удаленном хосте
             IPEndPoint endPoint = new IPEndPoint(remoteIPAddress, remotePort);

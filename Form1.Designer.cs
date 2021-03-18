@@ -40,6 +40,8 @@ namespace StepperControlEthernet
             this.label3 = new System.Windows.Forms.Label();
             this.localportTextBox = new System.Windows.Forms.TextBox();
             this.receivedMessageTextBox = new System.Windows.Forms.TextBox();
+            this.sendportbox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginButton
@@ -64,14 +66,14 @@ namespace StepperControlEthernet
             // 
             // remoteportTextBox
             // 
-            this.remoteportTextBox.Location = new System.Drawing.Point(117, 31);
+            this.remoteportTextBox.Location = new System.Drawing.Point(117, 57);
             this.remoteportTextBox.Name = "remoteportTextBox";
             this.remoteportTextBox.Size = new System.Drawing.Size(100, 20);
             this.remoteportTextBox.TabIndex = 2;
             // 
             // remoteadressTextBox
             // 
-            this.remoteadressTextBox.Location = new System.Drawing.Point(117, 57);
+            this.remoteadressTextBox.Location = new System.Drawing.Point(117, 83);
             this.remoteadressTextBox.Name = "remoteadressTextBox";
             this.remoteadressTextBox.Size = new System.Drawing.Size(100, 20);
             this.remoteadressTextBox.TabIndex = 3;
@@ -79,7 +81,7 @@ namespace StepperControlEthernet
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(12, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 4;
@@ -88,7 +90,7 @@ namespace StepperControlEthernet
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 64);
+            this.label2.Location = new System.Drawing.Point(12, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 5;
@@ -116,9 +118,9 @@ namespace StepperControlEthernet
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Порт отправителя";
+            this.label3.Text = "Порт прослушки";
             // 
             // localportTextBox
             // 
@@ -135,11 +137,29 @@ namespace StepperControlEthernet
             this.receivedMessageTextBox.Size = new System.Drawing.Size(234, 20);
             this.receivedMessageTextBox.TabIndex = 9;
             // 
+            // sendportbox
+            // 
+            this.sendportbox.Location = new System.Drawing.Point(117, 31);
+            this.sendportbox.Name = "sendportbox";
+            this.sendportbox.Size = new System.Drawing.Size(100, 20);
+            this.sendportbox.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Порт для отправки";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 225);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.sendportbox);
             this.Controls.Add(this.receivedMessageTextBox);
             this.Controls.Add(this.localportTextBox);
             this.Controls.Add(this.label3);
@@ -173,6 +193,8 @@ namespace StepperControlEthernet
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox localportTextBox;
         private System.Windows.Forms.TextBox receivedMessageTextBox;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox sendportbox;
     }
 }
 
