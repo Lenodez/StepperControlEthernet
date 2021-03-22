@@ -144,6 +144,16 @@ namespace StepperControlEthernet
                 receivingUdpClient.Close();
             }
         }
+
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            Send("left");
+        }
+
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            Send("right");
+        }
     }
 
 

@@ -42,6 +42,8 @@ namespace StepperControlEthernet
             this.receivedMessageTextBox = new System.Windows.Forms.TextBox();
             this.sendportbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginButton
@@ -56,7 +58,7 @@ namespace StepperControlEthernet
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(264, 128);
+            this.sendButton.Location = new System.Drawing.Point(263, 121);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(75, 23);
             this.sendButton.TabIndex = 6;
@@ -98,7 +100,7 @@ namespace StepperControlEthernet
             // 
             // commandTextBox
             // 
-            this.commandTextBox.Location = new System.Drawing.Point(12, 128);
+            this.commandTextBox.Location = new System.Drawing.Point(11, 121);
             this.commandTextBox.Name = "commandTextBox";
             this.commandTextBox.Size = new System.Drawing.Size(234, 20);
             this.commandTextBox.TabIndex = 5;
@@ -131,7 +133,7 @@ namespace StepperControlEthernet
             // 
             // receivedMessageTextBox
             // 
-            this.receivedMessageTextBox.Location = new System.Drawing.Point(12, 174);
+            this.receivedMessageTextBox.Location = new System.Drawing.Point(11, 167);
             this.receivedMessageTextBox.Name = "receivedMessageTextBox";
             this.receivedMessageTextBox.ReadOnly = true;
             this.receivedMessageTextBox.Size = new System.Drawing.Size(234, 20);
@@ -153,11 +155,33 @@ namespace StepperControlEthernet
             this.label4.TabIndex = 11;
             this.label4.Text = "Порт для отправки";
             // 
+            // rightButton
+            // 
+            this.rightButton.Location = new System.Drawing.Point(159, 221);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(75, 23);
+            this.rightButton.TabIndex = 12;
+            this.rightButton.Text = "Вправо";
+            this.rightButton.UseVisualStyleBackColor = true;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
+            // 
+            // leftButton
+            // 
+            this.leftButton.Location = new System.Drawing.Point(15, 221);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(75, 23);
+            this.leftButton.TabIndex = 13;
+            this.leftButton.Text = "Влево";
+            this.leftButton.UseVisualStyleBackColor = true;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 225);
+            this.ClientSize = new System.Drawing.Size(357, 268);
+            this.Controls.Add(this.leftButton);
+            this.Controls.Add(this.rightButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sendportbox);
             this.Controls.Add(this.receivedMessageTextBox);
@@ -195,6 +219,8 @@ namespace StepperControlEthernet
         private System.Windows.Forms.TextBox receivedMessageTextBox;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox sendportbox;
+        private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.Button leftButton;
     }
 }
 
