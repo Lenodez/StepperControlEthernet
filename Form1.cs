@@ -145,7 +145,7 @@ namespace StepperControlEthernet
             }
         }
 
-        private void leftButton_Click(object sender, EventArgs e)
+        public void leftButton_Click(object sender, EventArgs e)
         {
             Send("left");
         }
@@ -153,6 +153,19 @@ namespace StepperControlEthernet
         private void rightButton_Click(object sender, EventArgs e)
         {
             Send("right");
+        }
+
+        public void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    Send("left");
+                    break;
+                case Keys.Right:                    
+                    Send("right");
+                    break;
+            }
         }
     }
 

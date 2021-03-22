@@ -51,7 +51,7 @@ namespace StepperControlEthernet
             this.loginButton.Location = new System.Drawing.Point(237, 23);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(81, 35);
-            this.loginButton.TabIndex = 4;
+            this.loginButton.TabIndex = 5;
             this.loginButton.Text = "Задать параметры";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
@@ -61,7 +61,7 @@ namespace StepperControlEthernet
             this.sendButton.Location = new System.Drawing.Point(263, 121);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(75, 23);
-            this.sendButton.TabIndex = 6;
+            this.sendButton.TabIndex = 7;
             this.sendButton.Text = "=>";
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
@@ -71,14 +71,14 @@ namespace StepperControlEthernet
             this.remoteportTextBox.Location = new System.Drawing.Point(117, 57);
             this.remoteportTextBox.Name = "remoteportTextBox";
             this.remoteportTextBox.Size = new System.Drawing.Size(100, 20);
-            this.remoteportTextBox.TabIndex = 2;
+            this.remoteportTextBox.TabIndex = 3;
             // 
             // remoteadressTextBox
             // 
             this.remoteadressTextBox.Location = new System.Drawing.Point(117, 83);
             this.remoteadressTextBox.Name = "remoteadressTextBox";
             this.remoteadressTextBox.Size = new System.Drawing.Size(100, 20);
-            this.remoteadressTextBox.TabIndex = 3;
+            this.remoteadressTextBox.TabIndex = 4;
             // 
             // label1
             // 
@@ -103,14 +103,14 @@ namespace StepperControlEthernet
             this.commandTextBox.Location = new System.Drawing.Point(11, 121);
             this.commandTextBox.Name = "commandTextBox";
             this.commandTextBox.Size = new System.Drawing.Size(234, 20);
-            this.commandTextBox.TabIndex = 5;
+            this.commandTextBox.TabIndex = 6;
             // 
             // logoutButton
             // 
             this.logoutButton.Location = new System.Drawing.Point(237, 64);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(81, 35);
-            this.logoutButton.TabIndex = 7;
+            this.logoutButton.TabIndex = 8;
             this.logoutButton.Text = "Закрыть соединение";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
@@ -138,13 +138,14 @@ namespace StepperControlEthernet
             this.receivedMessageTextBox.ReadOnly = true;
             this.receivedMessageTextBox.Size = new System.Drawing.Size(234, 20);
             this.receivedMessageTextBox.TabIndex = 9;
+            this.receivedMessageTextBox.TabStop = false;
             // 
             // sendportbox
             // 
             this.sendportbox.Location = new System.Drawing.Point(117, 31);
             this.sendportbox.Name = "sendportbox";
             this.sendportbox.Size = new System.Drawing.Size(100, 20);
-            this.sendportbox.TabIndex = 10;
+            this.sendportbox.TabIndex = 2;
             // 
             // label4
             // 
@@ -157,20 +158,22 @@ namespace StepperControlEthernet
             // 
             // rightButton
             // 
-            this.rightButton.Location = new System.Drawing.Point(159, 221);
+            this.rightButton.Location = new System.Drawing.Point(250, 205);
             this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(75, 23);
+            this.rightButton.Size = new System.Drawing.Size(95, 51);
             this.rightButton.TabIndex = 12;
+            this.rightButton.TabStop = false;
             this.rightButton.Text = "Вправо";
             this.rightButton.UseVisualStyleBackColor = true;
             this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // leftButton
             // 
-            this.leftButton.Location = new System.Drawing.Point(15, 221);
+            this.leftButton.Location = new System.Drawing.Point(16, 205);
             this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(75, 23);
+            this.leftButton.Size = new System.Drawing.Size(95, 51);
             this.leftButton.TabIndex = 13;
+            this.leftButton.TabStop = false;
             this.leftButton.Text = "Влево";
             this.leftButton.UseVisualStyleBackColor = true;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
@@ -199,6 +202,7 @@ namespace StepperControlEthernet
             this.Text = "Lassard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
