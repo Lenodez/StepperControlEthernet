@@ -30,41 +30,27 @@ namespace StepperControlEthernet
         private void InitializeComponent()
         {
             this.loginButton = new System.Windows.Forms.Button();
-            this.sendButton = new System.Windows.Forms.Button();
             this.remoteportTextBox = new System.Windows.Forms.TextBox();
             this.remoteadressTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.commandTextBox = new System.Windows.Forms.TextBox();
             this.logoutButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.localportTextBox = new System.Windows.Forms.TextBox();
-            this.receivedMessageTextBox = new System.Windows.Forms.TextBox();
             this.sendportbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.leftButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(237, 23);
+            this.loginButton.Location = new System.Drawing.Point(11, 111);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(81, 35);
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "Задать параметры";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
-            // 
-            // sendButton
-            // 
-            this.sendButton.Location = new System.Drawing.Point(263, 121);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(75, 23);
-            this.sendButton.TabIndex = 7;
-            this.sendButton.Text = "=>";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // remoteportTextBox
             // 
@@ -98,16 +84,9 @@ namespace StepperControlEthernet
             this.label2.TabIndex = 5;
             this.label2.Text = "IP получателя";
             // 
-            // commandTextBox
-            // 
-            this.commandTextBox.Location = new System.Drawing.Point(11, 121);
-            this.commandTextBox.Name = "commandTextBox";
-            this.commandTextBox.Size = new System.Drawing.Size(234, 20);
-            this.commandTextBox.TabIndex = 6;
-            // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(237, 64);
+            this.logoutButton.Location = new System.Drawing.Point(62, 152);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(81, 35);
             this.logoutButton.TabIndex = 8;
@@ -131,15 +110,6 @@ namespace StepperControlEthernet
             this.localportTextBox.Size = new System.Drawing.Size(100, 20);
             this.localportTextBox.TabIndex = 1;
             // 
-            // receivedMessageTextBox
-            // 
-            this.receivedMessageTextBox.Location = new System.Drawing.Point(11, 167);
-            this.receivedMessageTextBox.Name = "receivedMessageTextBox";
-            this.receivedMessageTextBox.ReadOnly = true;
-            this.receivedMessageTextBox.Size = new System.Drawing.Size(234, 20);
-            this.receivedMessageTextBox.TabIndex = 9;
-            this.receivedMessageTextBox.TabStop = false;
-            // 
             // sendportbox
             // 
             this.sendportbox.Location = new System.Drawing.Point(117, 31);
@@ -156,53 +126,36 @@ namespace StepperControlEthernet
             this.label4.TabIndex = 11;
             this.label4.Text = "Порт для отправки";
             // 
-            // rightButton
+            // button1
             // 
-            this.rightButton.Location = new System.Drawing.Point(250, 205);
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(95, 51);
-            this.rightButton.TabIndex = 12;
-            this.rightButton.TabStop = false;
-            this.rightButton.Text = "Вправо";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
-            // 
-            // leftButton
-            // 
-            this.leftButton.Location = new System.Drawing.Point(16, 205);
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(95, 51);
-            this.leftButton.TabIndex = 13;
-            this.leftButton.TabStop = false;
-            this.leftButton.Text = "Влево";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            this.button1.Location = new System.Drawing.Point(107, 111);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 35);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "К управлению";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 268);
-            this.Controls.Add(this.leftButton);
-            this.Controls.Add(this.rightButton);
+            this.ClientSize = new System.Drawing.Size(275, 219);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sendportbox);
-            this.Controls.Add(this.receivedMessageTextBox);
             this.Controls.Add(this.localportTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logoutButton);
-            this.Controls.Add(this.commandTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.remoteadressTextBox);
             this.Controls.Add(this.remoteportTextBox);
-            this.Controls.Add(this.sendButton);
             this.Controls.Add(this.loginButton);
             this.Name = "Form1";
             this.Text = "Lassard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,20 +164,16 @@ namespace StepperControlEthernet
         #endregion
 
         private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.Button sendButton;
-        private System.Windows.Forms.TextBox remoteportTextBox;
-        private System.Windows.Forms.TextBox remoteadressTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox commandTextBox;
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox localportTextBox;
-        private System.Windows.Forms.TextBox receivedMessageTextBox;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox sendportbox;
-        private System.Windows.Forms.Button rightButton;
-        private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox localportTextBox;
+        public System.Windows.Forms.TextBox remoteportTextBox;
+        public System.Windows.Forms.TextBox remoteadressTextBox;
     }
 }
 

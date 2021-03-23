@@ -9,9 +9,8 @@ namespace StepperControlEthernet
 {
     public partial class Form1 : Form
     {
-        private static IPAddress remoteIPAddress;
-        private static int remotePort;
-        private static int localPort;
+        
+        private static int remotePort;        
         private static int sendPort;
         public bool isalive = false;
         Thread tReceive = null;
@@ -21,9 +20,8 @@ namespace StepperControlEthernet
             InitializeComponent();
             loginButton.Enabled = true;
             logoutButton.Enabled = false;
-            sendButton.Enabled = false;
-            commandTextBox.ReadOnly = true;
             
+            button1.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,23 +32,19 @@ namespace StepperControlEthernet
         public void loginButton_Click(object sender, EventArgs e)
         {
             
-            localPort = Int16.Parse(localportTextBox.Text);
+            
             remotePort = Int16.Parse(remoteportTextBox.Text);
             sendPort = Int16.Parse(sendportbox.Text);
-            remoteIPAddress = IPAddress.Parse(remoteadressTextBox.Text);
-            localportTextBox.ReadOnly = true;
-            remoteportTextBox.ReadOnly = true;
-            remoteadressTextBox.ReadOnly = true;
-            isalive = true;
+            
 
             try
             {
-                tReceive = new Thread(new ThreadStart(Receiver));
-                tReceive.Start();
+               
                 loginButton.Enabled = false;
                 logoutButton.Enabled = true;
-                sendButton.Enabled = true;
-                commandTextBox.ReadOnly = false;
+                
+                button1.Enabled = true;
+                
                 
             }
             catch (Exception ex)
@@ -59,65 +53,11 @@ namespace StepperControlEthernet
             }
             
         }
-        private void Receiver()
-        {
-            // Создаем UdpClient для чтения входящих данных
-            receivingUdpClient = new UdpClient(localPort);
+        
 
-            IPEndPoint RemoteIpEndPoint = null;
+        
 
-            try
-            {
-                
-
-                while (isalive)
-                {
-                    // Ожидание дейтаграммы
-                    byte[] receiveBytes = receivingUdpClient.Receive(ref RemoteIpEndPoint);
-
-                    // Преобразуем и отображаем данные
-                    string returnData = Encoding.UTF8.GetString(receiveBytes);
-                    receivedMessageTextBox.Text = returnData.ToString();                    
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);
-            }
-        }
-
-        public void sendButton_Click(object sender, EventArgs e)
-        {
-            Send(commandTextBox.Text);
-        }
-
-        public static void Send(string datagram)
-        {
-            // Создаем UdpClient
-            UdpClient sender = new UdpClient(sendPort);
-
-            // Создаем endPoint по информации об удаленном хосте
-            IPEndPoint endPoint = new IPEndPoint(remoteIPAddress, remotePort);
-
-            try
-            {
-                // Преобразуем данные в массив байтов
-                byte[] bytes = Encoding.UTF8.GetBytes(datagram);
-
-                // Отправляем данные
-                sender.Send(bytes, bytes.Length, endPoint);
-                sender.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);
-            }
-            finally
-            {
-                // Закрыть соединение
-                sender.Close();
-            }
-        }
+        
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
@@ -133,7 +73,8 @@ namespace StepperControlEthernet
             remoteadressTextBox.ReadOnly = false;
             loginButton.Enabled = true;
             logoutButton.Enabled = false;
-            commandTextBox.ReadOnly = true;    
+            
+            button1.Enabled = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -145,27 +86,16 @@ namespace StepperControlEthernet
             }
         }
 
-        public void leftButton_Click(object sender, EventArgs e)
-        {
-            Send("left");
-        }
 
-        private void rightButton_Click(object sender, EventArgs e)
-        {
-            Send("right");
-        }
 
-        public void Form1_KeyDown(object sender, KeyEventArgs e)
+        
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Left:
-                    Send("left");
-                    break;
-                case Keys.Right:                    
-                    Send("right");
-                    break;
-            }
+            Form2 f = new Form2(this);
+            f.Owner = this;
+            f.Show();
+            Hide();
         }
     }
 
